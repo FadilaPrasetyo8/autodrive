@@ -1,0 +1,25 @@
+@layer components {
+  .btn-primary {
+    background: var(--gradient-primary); /* ✅ wajib gini */
+    @apply text-white px-6 py-3 rounded-xl shadow-lg transition;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    @apply rounded-2xl shadow-lg;
+  }
+
+  .section {
+    @apply py-20 px-6 md:px-12;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}

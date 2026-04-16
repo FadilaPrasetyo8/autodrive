@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./components.css";
+
+/* 🎯 THEME SYSTEM (V4) */
+@theme {
+  --color-bg-primary: #0a0e27;
+  --color-bg-secondary: #1a1f3a;
+
+  --color-cyan: #00d4ff;
+  --color-cyan-dark: #0099ff;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --gradient-primary: linear-gradient(135deg, #00d4ff, #0099ff);
+  --gradient-bg: linear-gradient(180deg, #0a0e27, #1a1f3a);
+}
+
+/* BASE */
+:root {
+  --background: #0a0e27;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
