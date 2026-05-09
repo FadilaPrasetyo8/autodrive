@@ -14,9 +14,14 @@ const cars = [
     image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8",
   },
   {
-    name: "Porshe 911",
+    name: "Porsche 911",
     price: "Rp 1.1 M",
     image: "https://images.unsplash.com/photo-1593353798398-6024b7444bb6",
+  },
+  {
+    name: "Tesla Model S",
+    price: "Rp 1.4 M",
+    image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89",
   },
 ];
 
@@ -36,176 +41,215 @@ const testimonials = [
   {
     name: "Budi Santoso",
     role: "Freelancer",
-    text: "Mobil impian akhirnya kebeli, thanks AutoDrive 🙌",
+    text: "Mobil impian akhirnya kebeli 🙌",
     image: "https://randomuser.me/api/portraits/men/65.jpg",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="bg-[#070B1A] text-white min-h-screen ">
-      {/* NAVBAR */}
+    <main className="min-h-screen overflow-x-hidden bg-[#070B1A] text-white">
       <Navbar />
 
       {/* HERO */}
-
-      <section id="home" className="min-h-screen flex items-center ">
+      <section
+        id="home"
+        className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      >
+        {/* background */}
         <Image
           src="https://images.unsplash.com/photo-1493238792000-8113da705763"
           alt="car"
           fill
-          className="object-cover opacity-30"
+          priority
+          className="object-cover opacity-40"
         />
-        <div className="grid md:grid-cols-2 gap-10 items-center px-5 md:px-10 w-full">
-          {/* TEXT */}
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-snug md:leading-tight mb-4 md:mb-6">
-              Temukan Mobil <br className="hidden md:block" /> Impian Anda
-            </h2>
 
-            <p className="text-sm md:text-base lg:text-lg text-white/60 mb-6 md:mb-8">
-              Marketplace mobil modern dengan pilihan terbaik dan harga kompetitif.
-            </p>
+        {/* overlay */}
+        <div className="absolute inset-0 bg-[#060816]/80" />
 
-            {/* SEARCH BOX */}
-            <div className="bg-white/5 backdrop-blur p-3 md:p-4 rounded-xl flex flex-col md:flex-row gap-3">
+        {/* glow */}
+        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[160px]" />
+
+        {/* content */}
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-24 text-center lg:px-8">
+          <div className="animate-fade-up opacity-0-init mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-2 text-sm text-cyan-300 backdrop-blur-xl">
+            🚘 Marketplace Mobil Premium
+          </div>
+
+          <h1 className="animate-fade-up opacity-0-init delay-100 mx-auto max-w-5xl text-5xl font-black leading-[1.05] tracking-tight md:text-6xl xl:text-7xl">
+            Temukan Mobil
+            <span className="mt-2 block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Impian Anda
+            </span>
+          </h1>
+
+          <p className="animate-fade-up opacity-0-init delay-200 mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/60 md:text-lg">
+            Jelajahi koleksi mobil premium dengan desain modern, performa terbaik, dan pengalaman
+            membeli yang elegan.
+          </p>
+
+          {/* search */}
+          <div className="animate-fade-up opacity-0-init delay-300 mx-auto mt-12 max-w-4xl rounded-[28px] border border-white/10 bg-white/5 p-4 backdrop-blur-2xl">
+            <div className="grid gap-3 md:grid-cols-[1fr_160px_160px_140px]">
               <input
-                placeholder="Search..."
-                className="bg-transparent border border-white/10 px-3 py-2 rounded-md text-sm md:text-base flex-1"
+                placeholder="Cari mobil..."
+                className="h-14 rounded-2xl border border-white/10 bg-white/5 px-5 outline-none transition focus:border-cyan-400"
               />
 
-              <select className="bg-transparent border border-white/10 px-3 py-2 rounded-md text-sm md:text-base">
+              <select className="h-14 rounded-2xl border border-white/10 bg-white/5 px-4 outline-none">
                 <option>Brand</option>
               </select>
 
-              <select className="bg-transparent border border-white/10 px-3 py-2 rounded-md text-sm md:text-base">
-                <option>Type</option>
+              <select className="h-14 rounded-2xl border border-white/10 bg-white/5 px-4 outline-none">
+                <option>Tipe</option>
               </select>
 
-              <button className="bg-cyan-500 cursor-pointer px-4 py-2 rounded-md text-sm md:text-base">
+              <button className="h-14 rounded-2xl bg-cyan-500 font-semibold transition hover:bg-cyan-400">
                 Search
               </button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* IMAGE */}
-          <div className="relative h-[250px] md:h-[400px] lg:h-[450px]">
-            <Image
-              src="https://images.unsplash.com/photo-1611651186486-415f04eb78e4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="car"
-              fill
-              className="object-contain drop-shadow-[0_0_80px_rgba(34,211,238,0.7)]"
-            />
+      {/* CATEGORY */}
+      <section id="category" className="pb-14">
+        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+          <h3 className="mb-6 text-lg font-semibold md:text-xl">Kategori Mobil</h3>
+
+          <div className="flex flex-wrap gap-4">
+            {["SUV", "Sedan", "Sport", "Electric", "Luxury"].map((item) => (
+              <button
+                key={item}
+                className="rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-sm backdrop-blur-xl transition hover:border-cyan-400/40 hover:bg-cyan-500/10"
+              >
+                {item}
+              </button>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* BODY TYPE */}
-      <section id="category" className="px-5 md:px-10 pb-10 mt-4">
-        <h3 className="mb-4 md:mb-6 text-lg md:text-xl font-semibold">Kategori Mobil</h3>
+      {/* CARS */}
+      <section id="cars" className="pb-20">
+        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+          <div className="mb-8 flex items-center justify-between">
+            <h3 className="text-lg font-semibold md:text-xl">Mobil Terbaru</h3>
 
-        <div className="flex gap-3 md:gap-4 flex-wrap">
-          {["SUV", "Sedan", "Sport", "Electric"].map((item) => (
-            <div
-              key={item}
-              className="px-4 md:px-6 py-3 md:py-4 text-sm md:text-base bg-white/5 rounded-xl hover:bg-cyan-500/20 cursor-pointer transition border border-white/10"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
+            <button className="text-sm text-cyan-400 hover:text-cyan-300">Lihat Semua</button>
+          </div>
 
-      {/* CAR LIST */}
-      <section id="cars" className="px-5 md:px-10 pb-20">
-        <h3 className="mb-6 md:mb-8 text-lg md:text-xl font-semibold">Mobil Terbaru</h3>
+          <div className="relative overflow-hidden">
+            <div className="animate-marquee flex gap-6 w-max">
+              {[...cars, ...cars].map((car, i) => (
+                <div
+                  key={i}
+                  className="min-w-[320px] max-w-[320px] overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-400/30"
+                >
+                  <Image
+                    src={car.image}
+                    alt={car.name}
+                    width={400}
+                    height={250}
+                    className="h-56 w-full object-cover"
+                  />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {cars.map((car, i) => (
-            <div
-              key={i}
-              className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:scale-[1.03] transition"
-            >
-              <Image
-                src={car.image}
-                alt={car.name}
-                width={400}
-                height={250}
-                className="w-full h-44 md:h-48 object-cover"
-              />
+                  <div className="p-5">
+                    <h4 className="text-lg font-semibold">{car.name}</h4>
 
-              <div className="p-4 md:p-5">
-                <h4 className="text-base md:text-lg font-semibold">{car.name}</h4>
+                    <p className="mb-5 mt-2 text-cyan-400">{car.price}</p>
 
-                <p className="text-sm md:text-base text-cyan-400 mb-3 md:mb-4">{car.price}</p>
-
-                <button className="w-full bg-cyan-500 py-2 rounded-lg text-sm md:text-base hover:bg-cyan-600">
-                  Detail
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="testimonial" className="px-5 md:px-10 pb-20">
-        <h3 className="text-lg md:text-xl font-semibold mb-8">Kenapa Pilih AutoDrive?</h3>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {["Kualitas Terjamin", "Harga Terbaik", "Garansi Resmi", "Support 24/7"].map(
-            (item, index) => (
-              <div
-                key={index}
-                className="bg-white/5 p-5 rounded-xl text-center text-sm md:text-base"
-              >
-                {item}
-              </div>
-            ),
-          )}
-        </div>
-      </section>
-      <section className="px-5 md:px-10 pb-20">
-        <h3 className="text-lg md:text-xl font-semibold mb-10 text-center">Apa Kata Mereka</h3>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 rounded-2xl hover:scale-[1.02] transition relative overflow-hidden"
-            >
-              {/* glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 hover:opacity-100 transition" />
-
-              {/* user */}
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-12 h-12 rounded-full object-cover border border-white/10"
-                />
-
-                <div>
-                  <h4 className="text-sm md:text-base font-semibold">{item.name}</h4>
-                  <p className="text-xs text-white/50">{item.role}</p>
+                    <button className="w-full rounded-2xl bg-cyan-500 py-3 font-medium transition hover:bg-cyan-400">
+                      Detail
+                    </button>
+                  </div>
                 </div>
-              </div>
-
-              {/* text */}
-              <p className="text-sm md:text-base text-white/70 mb-4">“{item.text}”</p>
-
-              {/* rating */}
-              <div className="text-cyan-400 text-sm">⭐⭐⭐⭐⭐</div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
-      <section id="contact" className="text-center py-20">
-        <h3 className="text-2xl md:text-3xl font-bold mb-4">Siap Punya Mobil Impian?</h3>
-        <button className="bg-cyan-500 px-6 py-3 rounded-xl cursor-pointer">Hubungi Kami</button>
+
+      {/* FEATURES */}
+      <section id="testimonial" className="pb-20">
+        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+          <h3 className="mb-8 text-lg font-semibold md:text-xl">Kenapa Pilih AutoDrive?</h3>
+
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {["Kualitas Terjamin", "Harga Terbaik", "Garansi Resmi", "Support 24/7"].map(
+              (item, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center text-sm backdrop-blur-xl md:text-base"
+                >
+                  {item}
+                </div>
+              ),
+            )}
+          </div>
+        </div>
       </section>
-      <footer className="px-5 md:px-10 py-10 border-t border-white/10 text-white/60 text-sm">
-        <div className="flex flex-col md:flex-row justify-between gap-4">
+
+      {/* TESTIMONIAL */}
+      <section className="pb-20">
+        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+          <h3 className="mb-10 text-center text-lg font-semibold md:text-xl">Apa Kata Mereka</h3>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map((item, i) => (
+              <div
+                key={i}
+                className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:scale-[1.02]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 transition hover:opacity-100" />
+
+                <div className="mb-4 flex items-center gap-4">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-12 w-12 rounded-full border border-white/10 object-cover"
+                  />
+
+                  <div>
+                    <h4 className="text-sm font-semibold md:text-base">{item.name}</h4>
+
+                    <p className="text-xs text-white/50">{item.role}</p>
+                  </div>
+                </div>
+
+                <p className="mb-4 text-sm text-white/70 md:text-base">“{item.text}”</p>
+
+                <div className="text-sm text-cyan-400">⭐⭐⭐⭐⭐</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contact" className="pb-24">
+        <div className="mx-auto w-full max-w-5xl px-6 lg:px-8">
+          <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-cyan-500/20 to-blue-500/10 p-10 text-center backdrop-blur-2xl">
+            <h3 className="text-3xl font-bold md:text-4xl">Siap Punya Mobil Impian?</h3>
+
+            <p className="mx-auto mt-4 max-w-2xl text-white/60">
+              Dapatkan pengalaman membeli mobil yang cepat, modern, dan transparan bersama
+              AutoDrive.
+            </p>
+
+            <button className="mt-8 rounded-2xl bg-cyan-500 px-8 py-4 font-semibold transition hover:bg-cyan-400">
+              Hubungi Kami
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 py-10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 text-sm text-white/60 md:flex-row md:items-center md:justify-between lg:px-8">
           <p>© 2025 AutoDrive</p>
+
           <div className="flex gap-4">
             <Link href="#">Instagram</Link>
             <Link href="#">WhatsApp</Link>
